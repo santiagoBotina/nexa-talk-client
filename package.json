@@ -6,21 +6,38 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "db:migrate": "npx drizzle-kit migrate",
+    "db:migration:generate": "npx drizzle-kit generate",
+    "db:migration:custom-generate": "npx drizzle-kit generate --custom --name=--"
   },
   "dependencies": {
+    "@schedule-x/calendar": "^2.5.0",
+    "@schedule-x/react": "^2.4.2",
+    "@schedule-x/theme-default": "^2.5.0",
+    "drizzle-orm": "^0.36.1",
+    "jose": "^5.9.6",
+    "next": "15.0.3",
+    "pg": "^8.13.1",
+    "postgres": "^3.4.5",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "next": "15.0.3"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
+    "@types/pg": "^8.11.10",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "drizzle-kit": "^0.28.0",
     "eslint": "^8",
-    "eslint-config-next": "15.0.3"
+    "eslint-config-next": "15.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "postcss": "^8",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
