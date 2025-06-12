@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import NexaTalkLayout from "@/app/(dashboard)/layout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

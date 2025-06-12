@@ -1,32 +1,49 @@
-import { Icon } from "@/app/components/Icon";
+"use client";
 import { memo } from "react";
+import { usePathname } from "next/navigation";
+import { SideBarItem } from "@/app/components/sidebar/sideBarItem";
+import { H1 } from "@/app/components/Title/h1";
 
-const Component = () => {
+interface Route {
+  path: string;
+  label: string;
+  icon: string;
+}
+
+interface Props {
+  routes: Route[];
+}
+
+const Component = ({ routes }: Props) => {
+  const currentPathname = usePathname();
+  console.log(currentPathname);
+
+  const isRouteSelected = (path: string) => {
+    return currentPathname === path;
+  };
+
   return (
     <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
       <div className="p-7">
-        <h1 className="text-xl font-semibold text-gray-900">Nexa-Talk</h1>
+        <H1 title="Nexa-Talk" />
       </div>
 
       <div className="flex-1 p-4">
         <nav className="space-y-2">
-          <div className="flex items-center px-4 py-3 text-sm font-medium text-gray-900 bg-blue-50 rounded-lg border border-blue-100">
-            <Icon iconName="phone" />
-            <a href={"/calls"}>Llamadas</a>
-          </div>
-
-          <div className="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg cursor-pointer">
-            <Icon iconName="upload" />
-            <a href={"/upload"}>Subir archivos</a>
-          </div>
+          {routes.map(({ path, label, icon }: Route, index: number) => (
+            <SideBarItem
+              key={index}
+              isItemSelected={isRouteSelected(path)}
+              icon={icon}
+              path={path}
+              label={label}
+            />
+          ))}
         </nav>
       </div>
 
       <div className="p-4 border-t border-gray-200">
-        <div className="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg cursor-pointer">
-          <Icon iconName="logout" />
-          Logout
-        </div>
+        <SideBarItem icon="logout" path="/login" label="Logout" />
       </div>
     </div>
   );

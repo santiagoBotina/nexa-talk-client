@@ -2,7 +2,7 @@
 import { useUploadFile } from "@/app/hooks/useUploadFile";
 import { FilesTable } from "@/app/components/UploadFiles/filesTable";
 import { DragAndDrop } from "@/app/components/UploadFiles/dragAndDrop";
-import { H1 } from "@/app/components/Title";
+import { H1 } from "@/app/components/Title/h1";
 
 export default function UploadFile() {
   const {
