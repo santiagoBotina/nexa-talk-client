@@ -26,11 +26,11 @@ export default function NexaTalkLayout({
   children: ReactNode;
 }>) {
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="bg-gray-50 min-h-screen">
       <SideBar routes={routes} />
-      <div className="flex-1 flex flex-col">
+      <div className="ml-80">
         <NavBar />
-        <main className="flex-1 p-6">{children}</main>
+        <main className="overflow-y-auto p-6">{children}</main>
       </div>
     </div>
   );
