@@ -4,13 +4,15 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 export type LoginPayload = {
-  username: string;
+  legalID: string;
   email: string;
-  userID: number;
+  agentID: number;
   expires: Date;
 };
 
-const key = new TextEncoder().encode(process.env.JWT_SECRET as string);
+const key = new TextEncoder().encode(
+  process.env.NEXT_PUBLIC_JWT_SECRET as string,
+);
 
 const cookie = {
   name: "session",
@@ -44,28 +46,25 @@ export async function decrypt<T>(token: string): Promise<T | null> {
 }
 
 export async function createSession({
-  userID,
-  username,
+  agentID,
+  legalID,
   email,
 }: Omit<LoginPayload, "expires">): Promise<string> {
   const expires = new Date(Date.now() + cookie.duration);
-  const session = await encrypt({ username, userID, expires, email });
+  const session = await encrypt({ legalID, agentID, expires, email });
 
   (await cookies()).set(cookie.name, session, { ...cookie.options, expires });
-  redirect("/dashboard")
+  redirect("/");
 }
 
 export async function getCookie(name: string) {
-
   const browserCookie = (await cookies()).get(name)?.value;
 
   if (!browserCookie) {
-    return null
+    return null;
   }
 
-  const decrypted = await decrypt<LoginPayload>(browserCookie)
-
-  return decrypted
+  return decrypt<LoginPayload>(browserCookie);
 }
 
 export async function verifySession(): Promise<number> {
@@ -77,11 +76,11 @@ export async function verifySession(): Promise<number> {
 
   const session = await decrypt<LoginPayload>(browserCookie);
 
-  if (!session?.username) {
+  if (!session?.legalID) {
     redirect("/login");
   }
 
-  return session.userID as number;
+  return session.agentID as number;
 }
 
 export async function deleteSession() {

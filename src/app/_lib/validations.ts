@@ -23,6 +23,6 @@ const customErrorMap: z.ZodErrorMap = (issue, ctx) => {
 z.setErrorMap(customErrorMap);
 
 export const LoginSchema = z.object({
-  username: z.string().min(5),
+  legalID: z.string().min(5),
   password: z.string().min(8),
 });

@@ -2,6 +2,7 @@
   "name": "unicuces-improved-siaaf",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -13,14 +14,9 @@
     "db:migration:custom-generate": "npx drizzle-kit generate --custom --name=--"
   },
   "dependencies": {
-    "@schedule-x/calendar": "^2.5.0",
-    "@schedule-x/react": "^2.4.2",
-    "@schedule-x/theme-default": "^2.5.0",
-    "drizzle-orm": "^0.36.1",
     "jose": "^5.9.6",
+    "lucide-react": "^0.514.0",
     "next": "15.0.3",
-    "pg": "^8.13.1",
-    "postgres": "^3.4.5",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "zod": "^3.23.8"

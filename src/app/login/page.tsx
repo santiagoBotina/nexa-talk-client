@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { login } from "@/app/login/actions";
+import { login, LoginState } from "@/app/login/actions";
 import { useActionState, useEffect } from "react";
 import { verifySession } from "@/app/_lib/sessions";
 import { redirect } from "next/navigation";
@@ -8,11 +8,12 @@ import { redirect } from "next/navigation";
 export default function Login() {
   useEffect(() => {
     verifySession().then((session) => {
-      if (session) redirect("/dashboard");
+      if (session) redirect("/");
     });
   }, []);
 
-  const [state, action, pending] = useActionState(login);
+  const initialState: LoginState = { errors: {}, success: false };
+  const [state, action, pending] = useActionState(login, initialState);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-12 gap-20 sm:p-24 font-[family-name:var(--font-geist-sans)]">
@@ -39,16 +40,14 @@ export default function Login() {
             </svg>
             <input
               type="text"
-              name="username"
-              id="username"
-              autoComplete="username"
+              name="legalID"
+              id="legalID"
+              autoComplete="legalID"
               className="block flex-1 border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-500 focus:ring-0 text-lg"
-              placeholder="Usuario"
+              placeholder="cédula"
             />
           </div>
-          <p className="block text-red-500">
-            {state?.errors?.username ? state.errors.username : ""}
-          </p>
+          <p className="block text-red-500">{state?.errors?.legalID ?? ""}</p>
           <div className="flex items-center w-full rounded-lg shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +71,7 @@ export default function Login() {
             />
           </div>
           <p className="block text-red-500">
-            {state?.errors?.password ? state.errors.password : null}
+            {state?.errors?.password ?? null}
           </p>
           <button
             type="submit"

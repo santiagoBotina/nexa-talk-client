@@ -1,17 +1,19 @@
 "use server";
 
 import { LoginSchema } from "@/app/_lib/validations";
-import { LoginUsecase } from "@/core/domain/students/usecases/login.usecase";
-import { studentRepository } from "@/app/server";
+import { authAgentUseCase } from "@/core/domain/auth/usecases/auth-agent.usecase";
 
-type LoginState = {
-  username: string;
-  password: string;
+export type LoginState = {
+  errors?: {
+    legalID?: string[];
+    password?: string[];
+  };
+  success?: boolean;
 };
 
-export async function login(state: LoginState, formData: FormData) {
+export async function login(_state: LoginState, formData: FormData) {
   const validationResult = LoginSchema.safeParse({
-    username: formData.get("username"),
+    legalID: formData.get("legalID"),
     password: formData.get("password"),
   });
 
@@ -21,7 +23,9 @@ export async function login(state: LoginState, formData: FormData) {
     };
   }
 
-  const { username, password } = validationResult.data;
+  await authAgentUseCase.execute(validationResult.data);
 
-  await new LoginUsecase(studentRepository).execute(username, password);
+  return {
+    success: true,
+  };
 }
