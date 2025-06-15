@@ -1,14 +1,16 @@
 "use client";
-import Image from "next/image";
 import { login, LoginState } from "@/app/login/actions";
 import { useActionState, useEffect } from "react";
 import { verifySession } from "@/app/_lib/sessions";
 import { redirect } from "next/navigation";
+import { H1 } from "@/app/components/Title/h1";
+import { Lock, User } from "lucide-react";
+import { Logo } from "@/app/components/Logo";
 
 export default function Login() {
   useEffect(() => {
     verifySession().then((session) => {
-      if (session) redirect("/");
+      if (session) redirect("/dashboard");
     });
   }, []);
 
@@ -16,71 +18,109 @@ export default function Login() {
   const [state, action, pending] = useActionState(login, initialState);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-12 gap-20 sm:p-24 font-[family-name:var(--font-geist-sans)]">
-      <Image
-        src="/unicuces-logo.png"
-        width={600}
-        height={600}
-        alt="logo unicuces"
-      />
-      <form className="w-full max-w-2xl" action={action}>
-        <div className="flex flex-col items-center space-y-4">
-          <div className="flex items-center w-full rounded-lg shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              stroke="currentColor"
-              fill="none"
-              viewBox="0 0 24 24"
-              data-icon="SvgUser"
-              aria-hidden="true"
-            >
-              <path d="M12 3a3.5 3.5 0 11-2.475 1.025A3.493 3.493 0 0112 3zm6.2 18a9.257 9.257 0 00-1.825-5.65A5.593 5.593 0 0012 13h0a5.593 5.593 0 00-4.375 2.35A9.257 9.257 0 005.8 21h12.4z"></path>
-            </svg>
-            <input
-              type="text"
-              name="legalID"
-              id="legalID"
-              autoComplete="legalID"
-              className="block flex-1 border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-500 focus:ring-0 text-lg"
-              placeholder="cédula"
-            />
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full">
+        <div className="text-center mb-8">
+          <div className="flex justify-center mb-6">
+            <div className="bg-white p-4 rounded-2xl shadow-lg">
+              <Logo className="w-16 h-16" />
+            </div>
           </div>
-          <p className="block text-red-500">{state?.errors?.legalID ?? ""}</p>
-          <div className="flex items-center w-full rounded-lg shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              stroke="currentColor"
-              fill="none"
-              viewBox="0 0 24 24"
-              data-icon="SvgLock"
-              aria-hidden="true"
-            >
-              <path d="M18.644 21h-13.2a.945.945 0 01-1-1v-7.2a.945.945 0 011-1h13.1a.945.945 0 011 1V20a.808.808 0 01-.225.725.966.966 0 01-.675.275zm-10.9-9.2V7.3a4.3 4.3 0 118.6 0v4.5m-4.3 3.7v2"></path>
-            </svg>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              autoComplete="password"
-              className="block flex-1 border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-500 focus:ring-0 text-lg"
-              placeholder="Contraseña"
-            />
-          </div>
-          <p className="block text-red-500">
-            {state?.errors?.password ?? null}
+          <H1
+            title="Bienvenido de nuevo"
+            className="text-3xl font-bold text-gray-900 mb-2"
+          />
+          <p className="text-gray-600 text-sm">
+            Ingresa tus credenciales para acceder a tu cuenta
           </p>
-          <button
-            type="submit"
-            className="w-full max-w-md rounded-lg bg-blue-900 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            {pending ? "Validando..." : "Ingresar"}
-          </button>
         </div>
-      </form>
+        <form className="w-full max-w-2xl" action={action}>
+          <div className="space-y-4">
+            <label
+              htmlFor="legalID"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              No. de Identificación
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <User className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                name="legalID"
+                id="legalID"
+                autoComplete="username"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                placeholder="Ingresa tu número de identificación"
+              />
+              {state?.errors?.legalID && (
+                <p className="mt-1 text-sm text-red-600">
+                  {state.errors.legalID}
+                </p>
+              )}
+            </div>
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Contraseña
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Lock className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  autoComplete="current-password"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  placeholder="Ingresa tu contraseña"
+                />
+              </div>
+              {state?.errors?.password && (
+                <p className="mt-1 text-sm text-red-600">
+                  {state.errors.password}
+                </p>
+              )}
+            </div>
+            <button
+              type="submit"
+              disabled={pending}
+              className="w-full flex justify-center items-center py-4 px-6 border-0 rounded-2xl text-base font-semibold text-white bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 hover:from-purple-600 hover:via-pink-600 hover:to-blue-600 focus:outline-none focus:ring-4 focus:ring-purple-300/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02] shadow-2xl hover:shadow-purple-500/25 backdrop-blur-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:via-transparent before:to-transparent before:animate-pulse before:duration-1000"
+            >
+              {pending ? (
+                <>
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Validando...
+                </>
+              ) : (
+                "Ingresar"
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

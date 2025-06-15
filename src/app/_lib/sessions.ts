@@ -1,5 +1,5 @@
 "use server";
-import { SignJWT, jwtVerify } from "jose";
+import { jwtVerify, SignJWT } from "jose";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
@@ -54,7 +54,7 @@ export async function createSession({
   const session = await encrypt({ legalID, agentID, expires, email });
 
   (await cookies()).set(cookie.name, session, { ...cookie.options, expires });
-  redirect("/");
+  redirect("/dashboard");
 }
 
 export async function getCookie(name: string) {

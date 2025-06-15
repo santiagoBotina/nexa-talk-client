@@ -5,10 +5,10 @@ import { memo } from "react";
 
 const Component = () => {
   const data = [
-    { week: "Week 1", calls: 800 },
-    { week: "Week 2", calls: 1200 },
-    { week: "Week 3", calls: 600 },
-    { week: "Week 4", calls: 1100 },
+    { week: "Semana 1", calls: 800 },
+    { week: "Semana 2", calls: 1200 },
+    { week: "Semana 3", calls: 600 },
+    { week: "Semana 4", calls: 1100 },
   ];
 
   return (
