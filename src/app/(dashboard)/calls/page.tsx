@@ -4,8 +4,8 @@ import { CallStatus } from "@/app/components/CallsTable/types";
 const callsData = [
   {
     id: "1",
-    agent: "Agent A",
-    client: "Client X",
+    agent: "Victor H.",
+    client: "Milena R.",
     duration: "15 min",
     time: "10:00 AM",
     creationDate: "2024-01-15",
@@ -13,8 +13,8 @@ const callsData = [
   },
   {
     id: "2",
-    agent: "Agent B",
-    client: "Client Y",
+    agent: "Carla P.",
+    client: "Juan Carlos B.",
     duration: "20 min",
     time: "11:30 AM",
     creationDate: "2024-01-16",
@@ -22,8 +22,8 @@ const callsData = [
   },
   {
     id: "3",
-    agent: "Agent C",
-    client: "Client Z",
+    agent: "Victor H.",
+    client: "Maria G.",
     duration: "10 min",
     time: "09:00 AM",
     creationDate: "2024-01-17",
@@ -31,8 +31,8 @@ const callsData = [
   },
   {
     id: "4",
-    agent: "Agent A",
-    client: "Client W",
+    agent: "Sophia L.",
+    client: "Hugo S.",
     duration: "25 min",
     time: "14:00 PM",
     creationDate: "2024-01-18",
@@ -40,8 +40,8 @@ const callsData = [
   },
   {
     id: "5",
-    agent: "Agent B",
-    client: "Client V",
+    agent: "Sophia L.",
+    client: "Martin T.",
     duration: "12 min",
     time: "16:30 PM",
     creationDate: "2024-01-19",
@@ -49,8 +49,8 @@ const callsData = [
   },
   {
     id: "6",
-    agent: "Agent D",
-    client: "Client M",
+    agent: "Victor H.",
+    client: "Rodolfo M.",
     duration: "8 min",
     time: "08:45 AM",
     creationDate: "2024-01-20",
@@ -58,8 +58,8 @@ const callsData = [
   },
   {
     id: "7",
-    agent: "Agent C",
-    client: "Client N",
+    agent: "Carla P.",
+    client: "Julio C.",
     duration: "35 min",
     time: "13:15 PM",
     creationDate: "2024-01-21",
@@ -67,8 +67,8 @@ const callsData = [
   },
   {
     id: "8",
-    agent: "Agent E",
-    client: "Client P",
+    agent: "Oswaldo R.",
+    client: "Cristina L.",
     duration: "18 min",
     time: "15:45 PM",
     creationDate: "2024-01-22",

@@ -21,7 +21,7 @@ export default function UploadFile() {
   return (
     <>
       <div className="mb-6">
-        <H1 title="Upload File" />
+        <H1 title="Subir archivos" />
       </div>
 
       <div className="space-y-6">

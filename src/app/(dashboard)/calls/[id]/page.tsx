@@ -217,16 +217,16 @@ export default function CallDetailsPage() {
     duration: "15 min",
     date: "Julio 26, 2024",
     transcription:
-      "Cliente: Hola, recibí su llamada. Sé que tengo pagos atrasados. Agente Sarah: Gracias por contestar, Sr. García. Entiendo su situación y estoy aquí para ayudarle a encontrar una solución. Su cuenta tiene un saldo pendiente de $2,500. ¿Podemos hablar sobre sus opciones de pago? Cliente: La verdad es que he tenido dificultades financieras este mes, pero puedo pagar algo. Agente Sarah: Aprecio su honestidad. ¿Qué cantidad podría pagar hoy para comenzar? Cliente: Podría hacer un pago de $500 ahora y el resto en dos pagos mensuales. Agente Sarah: Perfecto. Puedo ofrecerle un plan de $500 hoy, y luego $1,000 cada uno los próximos dos meses. ¿Le parece razonable? Cliente: Sí, eso sí puedo manejarlo. Agente Sarah: Excelente. Voy a preparar el acuerdo de pago. ¿Prefiere débito automático o pagos manuales? Cliente: Prefiero hacer los pagos manualmente. Agente Sarah: Perfecto. Le enviaré la confirmación por correo. Gracias por trabajar conmigo en esta solución.",
+      "Cliente: Hola, recibí su llamada. Sé que tengo pagos atrasados. Agente Sarah: Gracias por contestar, Sr. García. Entiendo su situación y estoy aquí para ayudarle a encontrar una solución. Su cuenta tiene un saldo pendiente de $2'500.000. ¿Podemos hablar sobre sus opciones de pago? Cliente: La verdad es que he tenido dificultades financieras este mes, pero puedo pagar algo. Agente Sarah: Aprecio su honestidad. ¿Qué cantidad podría pagar hoy para comenzar? Cliente: Podría hacer un pago de $500.000 ahora y el resto en dos pagos mensuales. Agente Sarah: Perfecto. Puedo ofrecerle un plan de $500.000 hoy, y luego $1'000.000 cada uno los próximos dos meses. ¿Le parece razonable? Cliente: Sí, eso sí puedo manejarlo. Agente Sarah: Excelente. Voy a preparar el acuerdo de pago. ¿Prefiere débito automático o pagos manuales? Cliente: Prefiero hacer los pagos manualmente. Agente Sarah: Perfecto. Le enviaré la confirmación por correo. Gracias por trabajar conmigo en esta solución.",
     agentInfo: {
       name: "Sarah Miller",
       email: "sarah.miller@example.com",
     },
     additionalInfo: {
-      "Call ID": "#789012",
-      "Call Type": "Inbound",
-      "Call Status": "Completed",
-      Department: "Customer Support",
+      "ID de llamada": "#789012",
+      "Tipo de llamada": "Inbound",
+      "Estatus de transcripción": "Completado",
+      Departamento: "Servicio al Cliente",
     },
   };
 

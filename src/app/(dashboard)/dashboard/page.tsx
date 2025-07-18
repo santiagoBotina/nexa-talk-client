@@ -8,8 +8,8 @@ import CallsTable from "@/app/components/CallsTable";
 const callsData = [
   {
     id: "1",
-    agent: "Agent A",
-    client: "Client X",
+    agent: "Victor H.",
+    client: "Milena R.",
     duration: "15 min",
     time: "10:00 AM",
     creationDate: "2024-01-15",
@@ -17,8 +17,8 @@ const callsData = [
   },
   {
     id: "2",
-    agent: "Agent B",
-    client: "Client Y",
+    agent: "Carla P.",
+    client: "Juan Carlos B.",
     duration: "20 min",
     time: "11:30 AM",
     creationDate: "2024-01-16",
@@ -26,8 +26,8 @@ const callsData = [
   },
   {
     id: "3",
-    agent: "Agent C",
-    client: "Client Z",
+    agent: "Victor H.",
+    client: "Maria G.",
     duration: "10 min",
     time: "09:00 AM",
     creationDate: "2024-01-17",
@@ -35,8 +35,8 @@ const callsData = [
   },
   {
     id: "4",
-    agent: "Agent A",
-    client: "Client W",
+    agent: "Sophia L.",
+    client: "Hugo S.",
     duration: "25 min",
     time: "14:00 PM",
     creationDate: "2024-01-18",

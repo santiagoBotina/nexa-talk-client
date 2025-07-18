@@ -39,7 +39,7 @@ export const CallSummary = ({ transcription }: { transcription: string }) => {
     const hasPaymentPlan = /plan de pago|cuotas|mensual|pagar|abono/i.test(
       text,
     );
-    const hasAmount = text.match(/\$[\d,]+|\d+\s*(pesos|dolares|usd)/i);
+    const hasAmount = text.match(/\$?[\d']+(?:\.\d+)?\s*(pesos|dolares|usd)?/i);
     const hasDate = text.match(/\d+\s*(días?|meses?|semanas?)/i);
 
     return {
@@ -72,6 +72,8 @@ export const CallSummary = ({ transcription }: { transcription: string }) => {
 
     if (/plan de pago|acuerdo/i.test(text)) {
       points.push("Se estableció un plan de pago");
+      points.push("El pagador se mostró conforme con el plan");
+      points.push("Pago acordado a 3 meses");
     }
     if (/número de pedido|orden/i.test(text)) {
       points.push("Se consultó información de pedido");

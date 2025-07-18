@@ -51,10 +51,10 @@ const Component = ({
 
         <div className="space-y-2">
           <h3 className="text-lg font-semibold text-gray-900">
-            Drag and drop CSV or Excel file here
+            Arrastra los archivos CSV o Excel aquí
           </h3>
           <p className="text-sm text-gray-600">
-            Supported formats: .csv, .xlsx
+            Formatos soportados: .csv, .xlsx
           </p>
         </div>
 
@@ -62,7 +62,7 @@ const Component = ({
           onClick={browseFiles}
           className="px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg transition-colors duration-200"
         >
-          Browse Files
+          Buscar archivos
         </button>
       </div>
     </div>

@@ -13,7 +13,7 @@ const Component = () => {
 
   return (
     <MetricCard
-      title="Volumne de llamadas"
+      title="Volumen de llamadas"
       value="1200 llamadas"
       subtitle="Últimos 30 días +15%"
       icon={Phone}
